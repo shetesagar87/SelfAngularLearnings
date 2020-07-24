@@ -12,7 +12,8 @@ import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { DisplayEmployeeComponent } from './employee/display-employee.component';
 
-
+// All this code is angular practicals that i performed during my 
+//  angular learnings. 
 
 const appRoutes: Routes = [
   { path: 'list', component: ListEmployeesComponent },
