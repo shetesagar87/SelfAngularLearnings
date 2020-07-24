@@ -11,13 +11,14 @@ import { AppComponent } from './app.component';
 import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { DisplayEmployeeComponent } from './employee/display-employee.component';
+import  { CreateEmployeeCanDeactivateGuardService } from './employees/create-employee-can-deactivate-gaurd.service';
 
 // All this code is angular practicals that i performed during my 
 //  angular learnings. 
 
 const appRoutes: Routes = [
   { path: 'list', component: ListEmployeesComponent },
-  { path: 'create', component: CreateEmployeeComponent },
+  { path: 'create', component: CreateEmployeeComponent, canDeactivate: [CreateEmployeeCanDeactivateGuardService] },
   { path: '', redirectTo: '/list', pathMatch: 'full' }
 ];
 
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [EmployeeService ],
+  providers: [EmployeeService,
+    CreateEmployeeCanDeactivateGuardService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
