@@ -4,6 +4,10 @@ import { RouterModule,Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AgGridModule } from 'ag-grid-angular';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'; 
+
 import { EmployeeService } from './employees/employee.service';
 
 //import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +16,7 @@ import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { DisplayEmployeeComponent } from './employee/display-employee.component';
 import  { CreateEmployeeCanDeactivateGuardService } from './employees/create-employee-can-deactivate-gaurd.service';
+import { NgGridComponent } from './AngularEx/ng-grid/ng-grid.component';
 
 // All this code is angular practicals that i performed during my 
 //  angular learnings. 
@@ -19,6 +24,7 @@ import  { CreateEmployeeCanDeactivateGuardService } from './employees/create-emp
 const appRoutes: Routes = [
   { path: 'list', component: ListEmployeesComponent },
   { path: 'create', component: CreateEmployeeComponent, canDeactivate: [CreateEmployeeCanDeactivateGuardService] },
+  { path: 'ngGrid', component: NgGridComponent },
   { path: '', redirectTo: '/list', pathMatch: 'full' }
 ];
 
@@ -27,7 +33,8 @@ const appRoutes: Routes = [
     AppComponent,
     ListEmployeesComponent,
     CreateEmployeeComponent,
-    DisplayEmployeeComponent
+    DisplayEmployeeComponent,
+    NgGridComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,9 @@ const appRoutes: Routes = [
     BsDatepickerModule.forRoot(),
     //AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule,
+    AgGridModule.withComponents([])
   ],
   providers: [EmployeeService,
     CreateEmployeeCanDeactivateGuardService ],
